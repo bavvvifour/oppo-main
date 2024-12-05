@@ -14,6 +14,18 @@ public class GoodsReceiptModel {
         this.quantity = quantity;
     }
 
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
     @Override
     public String toString() {
         return "GoodsReceiptModel{" +
