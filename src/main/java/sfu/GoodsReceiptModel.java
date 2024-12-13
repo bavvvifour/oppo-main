@@ -21,6 +21,21 @@ public record GoodsReceiptModel(LocalDate date,
      * @param quantity    the quantity of the product
      */
     public GoodsReceiptModel {
+        if (date == null) {
+            throw new IllegalArgumentException(
+                    "Дата не может быть null."
+            );
+        }
+        if (productName == null || productName.isBlank()) {
+            throw new IllegalArgumentException(
+                    "Название товара не может быть пустым."
+            );
+        }
+        if (quantity <= 0) {
+            throw new IllegalArgumentException(
+                    "Количество должно быть положительным числом."
+            );
+        }
     }
 
     /**

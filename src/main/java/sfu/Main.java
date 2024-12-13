@@ -1,6 +1,8 @@
 package sfu;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * Main class for processing goods receipt input.
@@ -25,28 +27,23 @@ final class Main {
      * Processes user input for goods receipt.
      */
     public static void init() {
-        Scanner scanner = new Scanner(System.in);
+        String filePath = "data.txt";
         InputProcessor processor = new InputProcessor();
 
-        System.out.println("Введите описание объекта.");
-        System.out.println("Пример: 2023.09.15 \"Кофе\" 5");
-        System.out.println("Введите 'exit', чтобы выйти из программы.");
-
-        while (true) {
-            System.out.print("Введите данные: ");
-            String input = scanner.nextLine();
-
-            if (input.equalsIgnoreCase("exit")) {
-                System.out.println("Программа завершена.");
-                break;
+        try (BufferedReader reader =
+                     new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                try {
+                    GoodsReceiptModel model = processor.processInput(line);
+                    System.out.println("Созданный объект: " + model);
+                } catch (InvalidInputException e) {
+                    System.out.println("Ошибка обработки строки: " + line);
+                    System.out.println("Причина: " + e.getMessage());
+                }
             }
-
-            try {
-                GoodsReceiptModel model = processor.processInput(input);
-                System.out.println("Созданный объект: " + model);
-            } catch (InvalidInputException e) {
-                System.out.println("Ошибка: " + e.getMessage());
-            }
+        } catch (IOException e) {
+            System.out.println("Ошибка при чтении файла: " + e.getMessage());
         }
     }
 }
