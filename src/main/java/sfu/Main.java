@@ -2,12 +2,28 @@ package sfu;
 
 import java.util.Scanner;
 
-public class Main {
+/**
+ * Main class for processing goods receipt input.
+ */
+final class Main {
 
-    public static void main(String[] args) {
+    // Private constructor to prevent instantiation
+    private Main() {
+        // Utility class, no need for instantiation
+    }
+
+    /**
+     * Main method to start the program.
+     *
+     * @param args Command line arguments.
+     */
+    public static void main(final String[] args) {
         init();
     }
 
+    /**
+     * Processes user input for goods receipt.
+     */
     public static void init() {
         Scanner scanner = new Scanner(System.in);
         InputProcessor processor = new InputProcessor();

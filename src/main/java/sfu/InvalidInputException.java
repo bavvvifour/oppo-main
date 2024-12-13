@@ -1,7 +1,17 @@
 package sfu;
 
+/**
+ * Exception thrown when invalid input is encountered.
+ */
 public class InvalidInputException extends Exception {
-    public InvalidInputException(String message) {
+
+    /**
+     * Constructs a new InvalidInputException with the specified detail message.
+     *
+     * @param message the detail message, which is saved for later retrieval
+     * by the {@link #getMessage()} method.
+     */
+    public InvalidInputException(final String message) {
         super(message);
     }
 }

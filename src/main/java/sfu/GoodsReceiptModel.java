@@ -2,36 +2,68 @@ package sfu;
 
 import java.time.LocalDate;
 
-public class GoodsReceiptModel {
+/**
+ * Represents a goods receipt model with a date, product name, and quantity.
+ *
+ * @param date        The date of the goods receipt.
+ * @param productName The name of the product.
+ * @param quantity    The quantity of the product.
+ */
+public record GoodsReceiptModel(LocalDate date,
+                                String productName,
+                                int quantity) {
 
-    private final LocalDate date;
-    private final String productName;
-    private final int quantity;
-
-    public GoodsReceiptModel(LocalDate date, String productName, int quantity) {
-        this.date = date;
-        this.productName = productName;
-        this.quantity = quantity;
+    /**
+     * Constructs a new GoodsReceiptModel.
+     *
+     * @param date        the date of the goods receipt
+     * @param productName the name of the product
+     * @param quantity    the quantity of the product
+     */
+    public GoodsReceiptModel {
     }
 
-    public LocalDate getDate() {
+    /**
+     * Gets the date of the goods receipt.
+     *
+     * @return the date
+     */
+    @Override
+    public LocalDate date() {
         return date;
     }
 
-    public int getQuantity() {
+    /**
+     * Gets the quantity of the product.
+     *
+     * @return the quantity
+     */
+    @Override
+    public int quantity() {
         return quantity;
     }
 
-    public String getProductName() {
+    /**
+     * Gets the name of the product.
+     *
+     * @return the product name
+     */
+    @Override
+    public String productName() {
         return productName;
     }
 
+    /**
+     * Returns a string representation of the goods receipt model.
+     *
+     * @return a string representation of the object
+     */
     @Override
     public String toString() {
-        return "GoodsReceiptModel{" +
-                "date=" + date +
-                ", productName='" + productName + '\'' +
-                ", quantity=" + quantity +
-                '}';
+        return "GoodsReceiptModel{"
+                + "date=" + date
+                + ", productName='" + productName + '\''
+                + ", quantity=" + quantity
+                + '}';
     }
 }

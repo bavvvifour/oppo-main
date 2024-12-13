@@ -16,9 +16,9 @@ public class InputProcessorTest {
         String input = "2023.09.15 \"Кофе\" 5";
         GoodsReceiptModel model = processor.processInput(input);
 
-        assertEquals(LocalDate.of(2023, 9, 15), model.getDate());
-        assertEquals("Кофе", model.getProductName());
-        assertEquals(5, model.getQuantity());
+        assertEquals(LocalDate.of(2023, 9, 15), model.date());
+        assertEquals("Кофе", model.productName());
+        assertEquals(5, model.quantity());
     }
 
     @Test
