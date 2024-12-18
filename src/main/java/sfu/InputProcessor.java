@@ -78,13 +78,20 @@ public class InputProcessor {
      * @return quantity.
      * @throws InvalidInputException if the quantity is incorrect.
      */
-    private int parseQuantity(final String quantityStr)
-            throws InvalidInputException {
+    private int parseQuantity(
+            final String quantityStr) throws InvalidInputException {
+        if (quantityStr == null || quantityStr.isEmpty()) {
+            throw new InvalidInputException(
+                    "Количество не может быть пустым."
+            );
+        }
         try {
             return Integer.parseInt(quantityStr);
         } catch (NumberFormatException e) {
             throw new InvalidInputException(
-                    "Количество должно быть целым числом: " + quantityStr);
+                    "Количество должно быть целым числом: "
+                            + quantityStr);
         }
     }
+
 }
