@@ -28,7 +28,7 @@ public class InputProcessor {
             throw new InvalidInputException("Входная строка пуста.");
         }
 
-        String[] parts = input.split("\\s+");
+        String[] parts = input.split("\\s+(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
 
         // Using a constant with the correct naming
         final int expectedPartsLength = 3;
