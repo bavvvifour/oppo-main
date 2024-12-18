@@ -39,9 +39,9 @@ public class InputProcessor {
 
         LocalDate date = parseDate(parts[0]);
         String productName = parseProductName(parts[1]);
-        int quantity = parseQuantity(parts[2]);
+//        int quantity = parseQuantity(parts[2]);
 
-        return new GoodsReceiptModel(date, productName, quantity);
+        return new GoodsReceiptModel(date, productName, -1);
     }
 
     /**
@@ -69,22 +69,5 @@ public class InputProcessor {
      */
     private String parseProductName(final String productName) {
         return productName.replaceAll("\"", "").trim();
-    }
-
-    /**
-     * Parses the string into a quantity.
-     *
-     * @param quantityStr is a string with a quantity.
-     * @return quantity.
-     * @throws InvalidInputException if the quantity is incorrect.
-     */
-    private int parseQuantity(final String quantityStr)
-            throws InvalidInputException {
-        try {
-            return Integer.parseInt(quantityStr);
-        } catch (NumberFormatException e) {
-            throw new InvalidInputException(
-                    "Количество должно быть целым числом: " + quantityStr);
-        }
     }
 }
